@@ -15,7 +15,6 @@ class Romb:
             if not (0 < value < 180):
                 raise ValueError("Кут має бути в межах (0, 180)")
             object.__setattr__(self, name, value)
-            # автоматично обчислюємо суміжний кут
             object.__setattr__(self, "angle_b", 180 - value)
 
         elif name == "angle_b":
@@ -29,4 +28,4 @@ class Romb:
 #romb_1 = Romb(side_a=1, angle_a=180)
 #romb_2 = Romb(side_a=-3, angle_a=60)
 romb_3 = Romb(side_a=0.5, angle_a=60)
-print(romb_3.side_b)
+#print(romb_3.side_b)
