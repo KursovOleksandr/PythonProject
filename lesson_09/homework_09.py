@@ -1,7 +1,7 @@
 class Romb:
-    def __init__(self, side_a, angle_a):
+    def __init__(self, side_a: float, angle_a: float):
         self.side_a = side_a
-        self.side_b = None
+        self.side_b = None #можливо треба 0
         self.angle_a = angle_a
 
     def __setattr__(self, name, value):
@@ -9,7 +9,7 @@ class Romb:
             if value <= 0:
                 raise ValueError("Сторона ромба повинна бути більше 0")
             object.__setattr__(self, name, value)
-            object.__setattr__(self, "side_b", value)
+            object.__setattr__(self, "side_b", value) #додано щоб звертатись до side_b
 
         elif name == "angle_a":
             if not (0 < value < 180):
