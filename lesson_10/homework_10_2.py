@@ -63,3 +63,34 @@ for figure in figures:
     print(f"{figure.__class__.__name__}:")
     print(f"  Площа = {figure.area():.2f}")
     print(f"  Периметр = {figure.perimeter():.2f} \n")
+
+
+import unittest
+
+
+class TestFigures(unittest.TestCase):
+
+    def test_circle(self):
+        c = Circle(5)
+        self.assertAlmostEqual(c.area(), math.pi * 25)
+        self.assertAlmostEqual(c.perimeter(), 2 * math.pi * 5)
+
+    def test_rectangle(self):
+        r = Rectangle(4, 6)
+        self.assertEqual(r.area(), 24)
+        self.assertEqual(r.perimeter(), 20)
+
+    def test_triangle(self):
+        t = Triangle(3, 4, 5)
+        self.assertEqual(t.perimeter(), 12)
+        self.assertAlmostEqual(t.area(), 6.0)
+
+    def test_polymorphism(self):
+        figures = [Circle(1), Rectangle(2, 3), Triangle(3, 4, 5)]
+        results = [(f.area(), f.perimeter()) for f in figures]
+
+        self.assertEqual(len(results), 3)
+
+
+if __name__ == "__main__":
+    unittest.main()

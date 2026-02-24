@@ -16,3 +16,28 @@ def sum_from_string(string):
 
 for item in data:
     print(sum_from_string(item))
+
+
+import unittest
+
+
+class TestSumFromString(unittest.TestCase):
+
+    def test_valid_string(self):
+        self.assertEqual(sum_from_string("1,2,3,4"), 10)
+
+    def test_valid_string_with_large_numbers(self):
+        self.assertEqual(sum_from_string("1,2,3,4,50"), 60)
+
+    def test_invalid_string(self):
+        self.assertEqual(sum_from_string("qwerty1,2,3"), "Не можу це зробити!")
+
+    def test_empty_string(self):
+        self.assertEqual(sum_from_string(""), "Не можу це зробити!")
+
+    def test_string_with_spaces(self):
+        self.assertEqual(sum_from_string("1, 2, 3"), 6)
+
+
+if __name__ == "__main__":
+    unittest.main()

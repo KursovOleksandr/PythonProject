@@ -29,3 +29,32 @@ class Romb:
 #romb_2 = Romb(side_a=-3, angle_a=60)
 romb_3 = Romb(side_a=0.5, angle_a=60)
 #print(romb_3.side_b)
+
+import unittest
+
+
+class TestRomb(unittest.TestCase):
+
+    def test_valid_romb(self):
+        r = Romb(5, 60)
+        self.assertEqual(r.side_a, 5)
+        self.assertEqual(r.side_b, 5)
+        self.assertEqual(r.angle_a, 60)
+        self.assertEqual(r.angle_b, 120)
+
+    def test_invalid_side(self):
+        with self.assertRaises(ValueError):
+            Romb(0, 60)
+
+    def test_invalid_angle(self):
+        with self.assertRaises(ValueError):
+            Romb(5, 180)
+
+    def test_angle_b_is_read_only(self):
+        r = Romb(5, 60)
+        with self.assertRaises(AttributeError):
+            r.angle_b = 100
+
+
+if __name__ == "__main__":
+    unittest.main()
